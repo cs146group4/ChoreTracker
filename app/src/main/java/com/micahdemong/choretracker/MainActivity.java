@@ -79,19 +79,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.tasks) {
+            //Open tasks screen
+        } else if (id == R.id.weekly_review) {
+            //Open weekly review screen
+        } else if (id == R.id.user_settings) {
+            //Open User Settings Screen
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
