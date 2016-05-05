@@ -13,9 +13,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/*
+    TODO
+    ----------------------
+    - Create multiple activities and allow switching between them
+    - Create list of CardViews in content_main.xml
+    - Add information to these cards
+    - Let bottom right button open up a new Activity to fill out information on a task
+ */
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-//05 fuckem
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
