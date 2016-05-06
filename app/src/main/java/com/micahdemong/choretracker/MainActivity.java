@@ -108,11 +108,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.tasks) {
             //Open tasks screen
-        } else if (id == R.id.weekly_review) {
-            //Open weekly review screen
-        } else if (id == R.id.user_settings) {
+        }else if (id == R.id.user_settings) {
             //Open User Settings Screen
+        } else if (id == R.id.switch_user) {
+            //Open User selection popup
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
