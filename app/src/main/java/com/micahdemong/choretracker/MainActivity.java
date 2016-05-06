@@ -106,9 +106,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.tasks) {
-            //Open tasks screen
-        }else if (id == R.id.user_settings) {
+        if (id == R.id.user_settings) {
             //Open User Settings Screen
         } else if (id == R.id.switch_user) {
             //Open User selection popup
