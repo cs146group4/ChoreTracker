@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
 /**
- * Created by Micah on 5/5/2016.
+ * Displays the settings menu and handles related operations.
  */
 public class SettingsActivity extends Activity {
 

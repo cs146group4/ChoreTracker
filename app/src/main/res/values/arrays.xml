@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dummyPref">
+        <item>"Dumb option 1"</item>
+        <item>"Dumb option 2"</item>
+        <item>"Really cool option 3"</item>
+        <item>"Dumb option 4"</item>
+    </string-array>
+    <string-array name="dummyPrefValues">
+        <item>"dumPref1"</item>
+        <item>"dumPref2"</item>
+        <item>"dumPref3"</item>
+        <item>"dumPref4"</item>
+    </string-array>
+</resources>

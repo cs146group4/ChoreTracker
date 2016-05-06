@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <PreferenceCategory android:title="Dummy Preferences">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:summaryOff="This box is unchecked."
+            android:summaryOn="This box is checked."
+            android:title="Test checkbox" />
+        <ListPreference
+            android:entries="@array/dummyPref"
+            android:entryValues="@array/dummyPrefValues"
+            android:summary="A list of things to choose from."
+            android:title="Test List" />
+    </PreferenceCategory>
 </PreferenceScreen>
