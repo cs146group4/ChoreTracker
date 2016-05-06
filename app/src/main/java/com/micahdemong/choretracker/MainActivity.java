@@ -1,5 +1,6 @@
 package com.micahdemong.choretracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.support.design.widget.FloatingActionButton;
@@ -109,6 +110,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.user_settings) {
             //Open User Settings Screen
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
         } else if (id == R.id.switch_user) {
             //Open User selection popup
         }
