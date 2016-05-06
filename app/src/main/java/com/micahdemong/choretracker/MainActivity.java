@@ -20,6 +20,24 @@ import android.view.MenuItem;
     - Create list of CardViews in content_main.xml
     - Add information to these cards
     - Let bottom right button open up a new Activity to fill out information on a task
+    - Task class:
+        * Uses simple ints to model the days.
+        * int daysRemaining
+            > Starts at user defined value from New Event form
+            > If positive, signifies # of days in the future
+            > If 0, means today
+            > If negative, signifies # of days in the past / overdue
+            > Decrements each time the device date changes.
+        * Method to convert info from daysRemaining to String.
+            > For example, if today is a Wednesday, and daysRemaining = 3, then return a string "Saturday".
+            > To determine system DayOfWeek, this may be useful: http://stackoverflow.com/questions/5574673/what-is-the-easiest-way-to-get-the-current-day-of-the-week-in-android
+        * int daysPassed
+            > Starts at 0 (today).
+            > Decrements each time the device date changes.
+    - Create User class which stores name, # of tasks completed, picture, etc.
+        * Take in User as a parameter when a Task is created, completed, etc.
+        * Display this User's information next to created or completed task.
+    - Saving Task info to file, and retrieving these tasks to generate Cards on switch to mainActivity.
  */
 
 public class MainActivity extends AppCompatActivity
