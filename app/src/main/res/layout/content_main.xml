@@ -3,91 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.micahdemong.choretracker.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardElevation="4dp">
+        android:layout_height="match_parent" />
 
-        <RelativeLayout
-            android:id="@+id/card_relative_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/task_name_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:singleLine="true"
-                android:text="Task Name"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/created_by_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/task_name_text_view"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:text="Created by: User Name"
-                android:textSize="12sp" />
-
-            <View
-                android:id="@+id/dividing_line_view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/created_by_text_view"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorListDivider" />
-
-            <TextView
-                android:id="@+id/task_description_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dividing_line_view"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:text="This is a sample task description. It could be multiple sentences. It depends on the user input."
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/completed_by_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/task_description_text_view"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="10dp"
-                android:text="Completed by: User Name"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/complete_task_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/task_description_text_view"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="16dp" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
 </LinearLayout>

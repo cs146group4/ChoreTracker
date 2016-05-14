@@ -11,6 +11,11 @@ public class Task {
 	private int daysPassed;
 	private int daysRemaining;
 
+	/**
+	 * @param n The name of the task
+	 * @param d The description of the task
+     * @param b True if the task is completed, else false
+     */
 	public Task(String n, String d, boolean b) {
 		name = n;
 		description = d;
