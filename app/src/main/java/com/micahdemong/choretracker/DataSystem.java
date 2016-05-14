@@ -107,4 +107,8 @@ public class DataSystem {
 		}
 		return t;
 	}
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
 }
