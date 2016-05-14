@@ -9,12 +9,10 @@
         android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         card_view:cardUseCompatPadding="true"
-        card_view:cardElevation="2dp">
+        card_view:cardElevation="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
