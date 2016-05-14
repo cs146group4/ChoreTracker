@@ -16,7 +16,8 @@
         android:id="@+id/task_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/">
+        android:divider="@color/colorListDivider"
+        android:dividerHeight="1dp">
 
     </ListView>
 </RelativeLayout>
