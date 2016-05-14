@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.micahdemong.choretracker.MainActivity"
     tools:showIn="@layout/app_bar_main">
@@ -13,6 +12,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:background="@color/niceBrown"/>
 
 </LinearLayout>

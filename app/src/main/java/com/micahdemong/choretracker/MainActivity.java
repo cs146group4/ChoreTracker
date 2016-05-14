@@ -59,14 +59,15 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void initializeTaskData(){
+    private void initializeTaskData() {
         //Dummy Task list for test purposes
+        //TODO: this method should eventually call Datasystem.getTasks instead, once filesystem is finalized.
         taskList = new ArrayList<>();
         taskList.add(new Task("Do the dishes",
                 "Rinse off the dishes in the sink and put them all in the dishwasher.",
                 false));
         taskList.add(new Task("Mop the bathroom floor",
-                "",
+                "....pls?",
                 false));
         taskList.add(new Task("Vacuum",
                 "The living room, hallway, and Micah's bedroom need to be vacuumed.",
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity
                 false));
     }
 
-    private void initializeAdapter(){
+    private void initializeAdapter() {
         TaskAdapter adapter = new TaskAdapter(taskList);
         rv.setAdapter(adapter);
     }
