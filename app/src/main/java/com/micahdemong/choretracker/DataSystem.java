@@ -40,6 +40,23 @@ public class DataSystem {
 		}
 	}
 
+    public void createTask(Task t, Context context){
+        tasks.add(t);
+        sort(tasks);
+        try {
+            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
+            PrintWriter out = new PrintWriter(fos);
+
+            out.println(t.getName());
+            out.println(t.getDescription());
+            out.println(t.checkComplete());
+
+            out.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 	/*
 	 * Reads all data from file and adds it to tasks ArrayList, then sorts it.
 	 */
@@ -98,6 +115,20 @@ public class DataSystem {
 		}
 		return t;
 	}
+
+    /**
+     * Completely clears the tasks file and refreshes the ArrayList.
+     */
+    public void clearAllTasks(Context context){
+
+    }
+
+    /**
+     * Deletes the task with the specified name from the file and refreshes the ArrayList.
+     */
+    public void deleteTask(String name, Context context){
+
+    }
 
     public ArrayList<Task> getTasks() {
         return tasks;
