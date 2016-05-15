@@ -22,6 +22,10 @@
             android:label="UserSettings"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".NewTaskActivity"
+            android:label="Create New Task"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

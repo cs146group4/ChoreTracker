@@ -2,6 +2,7 @@ package com.micahdemong.choretracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.preference.PreferenceFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity
 
     private RecyclerView rv;
     ArrayList<Task> taskList;
+    public User currentUser;
+    static final String STATE_USER_ID = "currentUserID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,15 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Restore Activity State
+        if (savedInstanceState != null) {
+            String currentUserName = savedInstanceState.getString(STATE_USER_ID);
+            // TODO: Load the User with this UserId from the Users file.
+        } else // else If user file does not exist
+        {
+            // TODO: Open a new dialogue box: Welcome to ChoreTracker! What's your name?
+        } // else load first user from users file
 
         //Initialize the Recycler View
         rv = (RecyclerView) findViewById(R.id.rv);
@@ -44,8 +56,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent newTaskIntent = new Intent(this,NewTaskActivity.class);
             }
         });
 
@@ -60,9 +73,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initializeTaskData() {
+
+        //TODO: this method should eventually call DataSystem.getTasks instead, once filesystem is finalized.
+        DataSystem d = new DataSystem();
+        d.loadTasks(this);
+        taskList = d.getTasks();
         //Dummy Task list for test purposes
-        //TODO: this method should eventually call Datasystem.getTasks instead, once filesystem is finalized.
-        taskList = new ArrayList<>();
         taskList.add(new Task("Do the dishes",
                 "Rinse off the dishes in the sink and put them all in the dishwasher.",
                 false));
@@ -133,5 +149,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString(STATE_USER_ID, currentUser.getName());
 
+        super.onSaveInstanceState(outState);
+    }
 }

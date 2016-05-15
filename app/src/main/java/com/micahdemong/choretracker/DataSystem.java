@@ -1,35 +1,43 @@
 package com.micahdemong.choretracker;
 
+import android.content.Context;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DataSystem {
 	private ArrayList<Task> tasks;
-	private User user;
+	private User currentUser;
+    private ArrayList<User> users;
+
+    public static final String TASK_FILENAME = "tasks.txt";
 
 	public DataSystem() {
 		tasks = new ArrayList<Task>();
-		user = null;
+		currentUser = null;
 	}
 
 	public void createUser(String name) {
 		User u = new User(name);
-		user = u;
+		currentUser = u;
 	}
 
 	/*
 	 * Creates a task, writes it to a data file, then sorts the tasks ArrayList.
 	 * You may change the file path/name accordingly.
 	 */
-	public void createTask(String name, String description, boolean isComplete) {
+	public void createTask(String name, String description, boolean isComplete, Context context) {
 		Task t = new Task(name, description, isComplete);
 		tasks.add(t);
-		t.setCreator(user.getName());
+		t.setCreator(currentUser.getName());
 		sort(tasks);
 		try {
-			PrintWriter out = new PrintWriter("tasks.txt");
+            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
+			PrintWriter out = new PrintWriter(fos);
 
 			out.println(name);
 			out.println(description);
@@ -46,10 +54,10 @@ public class DataSystem {
 	/*
 	 * Reads all data from file and adds it to tasks ArrayList, then sorts it.
 	 */
-	public void loadTasks(String filename) {
+	public void loadTasks(Context context) {
 		try {
-			File inputFile2 = new File(filename);
-			Scanner in = new Scanner(inputFile2);
+            FileInputStream fis = context.openFileInput(TASK_FILENAME);
+			Scanner in = new Scanner(fis);
 
 			while (in.hasNextLine()) {
 				String name = in.nextLine();
@@ -70,7 +78,7 @@ public class DataSystem {
 			System.out.print(e.getMessage());
 		}
 	}
-	
+
 	public void clearOldTasks() {
 		int index = 0;
 		for (Task t : tasks) {
@@ -82,9 +90,9 @@ public class DataSystem {
 	}
 
 	public void completeTask(Task t) {
-		user.completedTask();
+		currentUser.completedTask();
 		t.setComplete();
-		t.setCompletor(user.getName());
+		t.setCompletor(currentUser.getName());
 	}
 
 	/*
