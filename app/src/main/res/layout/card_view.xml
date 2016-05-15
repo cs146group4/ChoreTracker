@@ -4,20 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardElevation="8dp">
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/task_name_text_view"
@@ -38,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/task_name_text_view"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:text="Created: n days ago"
                 android:textSize="12sp" />
@@ -64,25 +63,28 @@
                 android:text="This is a sample task description. It could be multiple sentences. It depends on the user input."
                 android:textSize="16sp" />
 
-            <CheckBox
+            <Button
                 android:id="@+id/task_complete_check_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/task_description_text_view"
                 android:layout_marginBottom="8dp"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"
+                android:text="Complete" />
 
             <TextView
                 android:id="@+id/due_date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/task_description_text_view"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
-                android:layout_toLeftOf="@id/task_complete_check_box"
+                android:gravity="bottom"
+                android:paddingBottom="16dp"
                 android:text="Due: n days from now"
                 android:textSize="12sp" />
 
