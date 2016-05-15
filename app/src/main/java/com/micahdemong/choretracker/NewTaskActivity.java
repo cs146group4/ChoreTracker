@@ -18,8 +18,10 @@ public class NewTaskActivity extends Activity {
         EditText description = (EditText) findViewById(R.id.new_task_desc_edit_text);
         String titleText = title.getText().toString();
         String descText = description.getText().toString();
+
         DataSystem d = new DataSystem();
-        d.createTask(titleText, descText, false, this);
+        d.createTask(titleText, descText, false, getApplicationContext());
+
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }

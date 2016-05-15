@@ -33,21 +33,21 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/created_by_text_view"
+                android:id="@+id/create_date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/task_name_text_view"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:text="Created by: User Name"
+                android:text="Created: n days ago"
                 android:textSize="12sp" />
 
             <View
                 android:id="@+id/dividing_line_view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/created_by_text_view"
+                android:layout_below="@id/create_date_text_view"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
@@ -74,7 +74,7 @@
                 android:layout_marginRight="16dp" />
 
             <TextView
-                android:id="@+id/completed_by_text_view"
+                android:id="@+id/due_date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/task_description_text_view"
@@ -83,9 +83,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
                 android:layout_toLeftOf="@id/task_complete_check_box"
-                android:text="Completed by: User Name"
+                android:text="Due: n days from now"
                 android:textSize="12sp" />
-
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

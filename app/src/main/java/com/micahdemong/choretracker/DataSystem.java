@@ -11,19 +11,11 @@ import java.util.Scanner;
 
 public class DataSystem {
 	private ArrayList<Task> tasks;
-	private User currentUser;
-    private ArrayList<User> users;
 
     public static final String TASK_FILENAME = "tasks.txt";
 
 	public DataSystem() {
 		tasks = new ArrayList<Task>();
-		currentUser = null;
-	}
-
-	public void createUser(String name) {
-		User u = new User(name);
-		currentUser = u;
 	}
 
 	/*
@@ -33,7 +25,6 @@ public class DataSystem {
 	public void createTask(String name, String description, boolean isComplete, Context context) {
 		Task t = new Task(name, description, isComplete);
 		tasks.add(t);
-		t.setCreator(currentUser.getName());
 		sort(tasks);
 		try {
             FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
@@ -42,8 +33,6 @@ public class DataSystem {
 			out.println(name);
 			out.println(description);
 			out.println(t.checkComplete());
-			out.println(t.getCreator());
-			out.println(t.getCompletor());
 
 			out.close();
 		} catch (Exception e) {
@@ -63,13 +52,9 @@ public class DataSystem {
 				String name = in.nextLine();
 				String description = in.nextLine();
 				String completionStatus = in.nextLine();
-				String creator = in.nextLine();
-				String completor = in.nextLine();
 				boolean isComplete = Boolean.parseBoolean(completionStatus);
 
 				Task t = new Task(name, description, isComplete);
-				t.setCreator(creator);
-				t.setCompletor(completor);
 				tasks.add(t);
 			}
 			sort(tasks);
@@ -90,9 +75,7 @@ public class DataSystem {
 	}
 
 	public void completeTask(Task t) {
-		currentUser.completedTask();
 		t.setComplete();
-		t.setCompletor(currentUser.getName());
 	}
 
 	/*

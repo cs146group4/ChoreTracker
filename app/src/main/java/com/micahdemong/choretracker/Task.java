@@ -6,8 +6,6 @@ public class Task {
 	private String name;
 	private String description;
 	private boolean isCompleted;
-	private String created;
-	private String completed;
 	private int daysPassed;
 	private int daysRemaining;
 
@@ -20,8 +18,6 @@ public class Task {
 		name = n;
 		description = d;
 		isCompleted = b;
-		created = "";
-		completed = "";
 	}
 
 	public String getName() {
@@ -44,24 +40,8 @@ public class Task {
 		return daysRemaining;
 	}
 
-	public String getCreator() {
-		return created;
-	}
-
-	public String getCompletor() {
-		return completed;
-	}
-
 	public void setComplete() {
 		isCompleted = true;
-	}
-
-	public void setCreator(String n) {
-		created = n;
-	}
-
-	public void setCompletor(String n) {
-		completed = n;
 	}
 
 	public String daysConversion(int intDay) {

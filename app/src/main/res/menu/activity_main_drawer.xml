@@ -7,7 +7,7 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/user_settings" />
         <item
-            android:id="@+id/switch_user"
+            android:id="@+id/about"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/switch_user" />
     </group>
