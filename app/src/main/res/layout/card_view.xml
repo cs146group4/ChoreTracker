@@ -45,7 +45,7 @@
             <View
                 android:id="@+id/dividing_line_view"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:layout_below="@id/create_date_text_view"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="16dp"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/dividing_line_view"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:text="This is a sample task description. It could be multiple sentences. It depends on the user input."
                 android:textSize="16sp" />
@@ -69,9 +69,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/task_description_text_view"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="16dp"
-                android:text="Complete" />
+                android:layout_marginTop="8dp"
+                android:text="Done"
+                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"/>
 
             <TextView
                 android:id="@+id/due_date_text_view"
@@ -80,7 +80,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
                 android:gravity="bottom"
