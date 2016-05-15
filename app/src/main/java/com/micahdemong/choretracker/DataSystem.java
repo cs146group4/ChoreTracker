@@ -27,7 +27,7 @@ public class DataSystem {
 		tasks.add(t);
 		sort(tasks);
 		try {
-            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
+            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_APPEND);
 			PrintWriter out = new PrintWriter(fos);
 
 			out.println(name);
@@ -44,7 +44,7 @@ public class DataSystem {
         tasks.add(t);
         sort(tasks);
         try {
-            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
+            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_APPEND);
             PrintWriter out = new PrintWriter(fos);
 
             out.println(t.getName());
@@ -120,7 +120,11 @@ public class DataSystem {
      * Completely clears the tasks file and refreshes the ArrayList.
      */
     public void clearAllTasks(Context context){
-
+        try {
+            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
