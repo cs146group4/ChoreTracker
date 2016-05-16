@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="Delete All Tasks"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_demo_addtasks"
+        android:orderInCategory="101"
+        android:title="Demo: Add Tasks"
+        app:showAsAction="never"/>
 </menu>

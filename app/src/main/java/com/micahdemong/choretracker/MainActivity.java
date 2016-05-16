@@ -129,9 +129,25 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_delete_all_tasks) {
             showDialog();
             return true;
+        } else if (id == R.id.action_demo_addtasks) {
+            addDemoTasks();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addDemoTasks() {
+        Task t1 = new Task("Do Dishes", "Do all the dishes and put them in the dishwasher.", false, 0);
+        Task t2 = new Task("Clean Bathroom", "Wipe off counters, clean shower, clean toilet bowl.", false, 2);
+        Task t3 = new Task("Vacuum Floor", "Bedroom, living room, and hallway all need to be vacuumed.", false, 2);
+        Task t4 = new Task("Do Laundry", "", false, 5);
+        dataSys.addToList(t1);
+        dataSys.addToList(t2);
+        dataSys.addToList(t3);
+        dataSys.addToList(t4);
+        setContentVisibility();
+        initializeAdapter();
     }
 
     void showDialog() {
