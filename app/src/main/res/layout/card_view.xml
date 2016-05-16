@@ -43,13 +43,15 @@
                 android:textSize="12sp" />
 
             <ImageButton
+                android:id="@+id/delete_task_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_clear_black_24dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_margin="8dp"
-                style="@style/Widget.AppCompat.ActionButton.CloseMode"/>
+                style="@style/Widget.AppCompat.ActionButton.CloseMode"
+                android:onClick="deleteTask"/>
 
             <View
                 android:id="@+id/dividing_line_view"
@@ -73,7 +75,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/task_complete_check_box"
+                android:id="@+id/task_complete_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
