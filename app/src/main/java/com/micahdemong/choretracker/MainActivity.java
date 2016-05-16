@@ -1,12 +1,9 @@
 package com.micahdemong.choretracker;
 
 import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -28,14 +25,13 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView rv;
     private TextView emptyView;
-    ArrayList<Task> taskList;
+    DataSystem dataSys;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,19 +76,18 @@ public class MainActivity extends AppCompatActivity
 
     private void initializeTaskData() {
 
-        DataSystem d = new DataSystem();
-        d.loadTasks(getApplicationContext());
-        taskList = d.getTasks();
+        dataSys = new DataSystem();
+        dataSys.loadTasks(getApplicationContext());
 
     }
 
     private void initializeAdapter() {
-        TaskAdapter adapter = new TaskAdapter(taskList);
+        TaskAdapter adapter = new TaskAdapter(dataSys.getTasks());
         rv.setAdapter(adapter);
     }
 
     private void setContentVisibility() {
-        if (taskList.isEmpty()){
+        if (dataSys.getTasks().isEmpty()){
             rv.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
         }
@@ -160,7 +155,7 @@ public class MainActivity extends AppCompatActivity
         newFragment.show(getSupportFragmentManager(), "dialog");
     }
 
-    public void doPositiveClick() {
+    public void doDeleteAllTasks() {
         //TODO: Delete all tasks
         Log.i("FragmentAlertDialog", "Positive click!");
     }
@@ -208,7 +203,7 @@ public class MainActivity extends AppCompatActivity
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            ((MainActivity) getActivity()).doPositiveClick();
+                            ((MainActivity) getActivity()).doDeleteAllTasks();
                         }
                     })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

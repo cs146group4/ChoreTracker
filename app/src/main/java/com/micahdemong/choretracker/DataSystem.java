@@ -116,13 +116,6 @@ public class DataSystem {
 		return t;
 	}
 
-    /**
-     * Deletes the task with the specified name from the file and refreshes the ArrayList.
-     */
-    public void deleteTask(String name, Context context){
-
-    }
-
     public ArrayList<Task> getTasks() {
         return tasks;
     }
