@@ -26,6 +26,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         CardView cv;
         TextView taskName;
         TextView taskDescription;
+        TextView daysRemaining;
         ImageButton deleteTaskButton;
         Button checkTaskButton;
         public IMyViewHolderClicks mListener;
@@ -37,7 +38,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             taskName = (TextView) itemView.findViewById(R.id.task_name_text_view);
             taskDescription = (TextView) itemView.findViewById(R.id.task_description_text_view);
             mListener = listener;
-
+            daysRemaining = (TextView) itemView.findViewById(R.id.due_date_text_view);
             deleteTaskButton = (ImageButton) itemView.findViewById(R.id.delete_task_button);
             checkTaskButton = (Button) itemView.findViewById(R.id.task_complete_button);
             deleteTaskButton.setOnClickListener(this);
@@ -88,6 +89,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         Task t = taskList.get(i);
         tvh.taskName.setText(t.getName());
         tvh.taskDescription.setText(t.getDescription());
+        String dayRemainText = "Due: " + Task.daysConversion(t.getDaysRemaining());
+        tvh.daysRemaining.setText(dayRemainText);
     }
 
     @Override

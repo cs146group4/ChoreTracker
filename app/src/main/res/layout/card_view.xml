@@ -39,7 +39,7 @@
                 android:layout_below="@id/task_name_text_view"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:text="Created: n days ago"
+                android:text="Created Today"
                 android:textSize="12sp" />
 
             <ImageButton

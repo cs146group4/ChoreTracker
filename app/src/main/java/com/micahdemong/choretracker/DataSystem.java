@@ -33,6 +33,7 @@ public class DataSystem {
 			out.println(name);
 			out.println(description);
 			out.println(t.checkComplete());
+			out.println(t.getDaysRemaining());
 
 			out.close();
 		} catch (Exception e) {
@@ -48,6 +49,7 @@ public class DataSystem {
             out.println(t.getName());
             out.println(t.getDescription());
             out.println(t.checkComplete());
+			out.println(t.getDaysRemaining());
 
             out.close();
         } catch (Exception e) {
@@ -72,9 +74,12 @@ public class DataSystem {
 				String name = in.nextLine();
 				String description = in.nextLine();
 				String completionStatus = in.nextLine();
-				boolean isComplete = Boolean.parseBoolean(completionStatus);
+				String daysRemaining = in.nextLine();
 
-				Task t = new Task(name, description, isComplete);
+				boolean isComplete = Boolean.parseBoolean(completionStatus);
+				int daysRem = Integer.parseInt(daysRemaining);
+
+				Task t = new Task(name, description, isComplete, daysRem);
 				tasks.add(t);
 			}
 			sort(tasks);
