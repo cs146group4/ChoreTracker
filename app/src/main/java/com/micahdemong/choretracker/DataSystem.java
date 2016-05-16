@@ -42,7 +42,8 @@ public class DataSystem {
 	}
 
     public void saveTask(Task t, Context context){
-        try {
+        tasks = sort(tasks);
+		try {
             FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_APPEND);
             PrintWriter out = new PrintWriter(fos);
 

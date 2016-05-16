@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity
         TaskAdapter t = (TaskAdapter) rv.getAdapter();
         t.deleteAllTasks();
         Log.i("FragmentAlertDialog", "Deleted all tasks.");
+        setContentVisibility();
     }
 
     public void doNegativeClick() {
