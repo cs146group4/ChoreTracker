@@ -24,8 +24,6 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -87,11 +85,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setContentVisibility() {
-        if (dataSys.getTasks().isEmpty()){
+        if (dataSys.getTasks().isEmpty()) {
             rv.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             rv.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
         }
@@ -125,9 +122,9 @@ public class MainActivity extends AppCompatActivity
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info =
                 (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        if(item.getItemId() == R.id.delete_task){
+        if (item.getItemId() == R.id.delete_task) {
             //TODO: Delete this task
-            Log.i("contextMenu","Task Deletion Called!");
+            Log.i("contextMenu", "Task Deletion Called!");
             return true;
         }
         return super.onContextItemSelected(item);
@@ -150,15 +147,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     void showDialog() {
-        DialogFragment newFragment = MyAlertDialogFragment.newInstance
+        DialogFragment newFragment = deleteAllDialogFragment.newInstance
                 (R.string.alert_dialog_two_buttons_title);
         newFragment.show(getSupportFragmentManager(), "dialog");
     }
 
     public void doDeleteAllTasks() {
         dataSys.deleteAllTasks(getApplicationContext());
-        initializeAdapter();
-        Log.i("FragmentAlertDialog", "Should have deleted all tasks.");
+        TaskAdapter t = (TaskAdapter) rv.getAdapter();
+        t.deleteAllTasks();
+        Log.i("FragmentAlertDialog", "Deleted all tasks.");
     }
 
     public void doNegativeClick() {
@@ -184,10 +182,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public static class MyAlertDialogFragment extends DialogFragment {
+    public static class deleteAllDialogFragment extends DialogFragment {
 
-        public static MyAlertDialogFragment newInstance(int title) {
-            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+        public static deleteAllDialogFragment newInstance(int title) {
+            deleteAllDialogFragment frag = new deleteAllDialogFragment();
             Bundle args = new Bundle();
             args.putInt("title", title);
             frag.setArguments(args);

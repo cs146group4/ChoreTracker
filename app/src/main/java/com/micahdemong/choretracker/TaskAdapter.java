@@ -47,13 +47,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         @Override
         public void onClick(View v) {
             if (v == deleteTaskButton)
-                mListener.onDelTask((ImageButton) v);
+                mListener.onDelTask((ImageButton) v, getAdapterPosition());
             else if (v == checkTaskButton)
                 mListener.onCheckTask((Button) v);
         }
 
         public interface IMyViewHolderClicks {
-            void onDelTask(ImageButton caller);
+            void onDelTask(ImageButton caller, int position);
 
             void onCheckTask(Button caller);
         }
@@ -65,13 +65,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     }
 
     @Override
-    public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TaskViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
         TaskViewHolder vh = new TaskViewHolder(v,
                 new TaskAdapter.TaskViewHolder.IMyViewHolderClicks() {
                     @Override
-                    public void onDelTask(ImageButton caller) {
+                    public void onDelTask(ImageButton caller, int position) {
                         Log.i("TaskAdapter", "Called onDelTask!");
+                        removeTask(position);
                     }
 
                     @Override
@@ -92,5 +93,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public void removeTask(int position) {
+        taskList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, taskList.size());
+    }
+
+    public void deleteAllTasks() {
+        int size = taskList.size();
+        taskList = new ArrayList<>();
+        notifyItemRangeRemoved(0, size);
+    }
+
+    public void taskCheck(int position) {
+
     }
 }
