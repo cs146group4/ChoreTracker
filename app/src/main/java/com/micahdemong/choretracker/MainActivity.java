@@ -119,18 +119,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info =
-                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        if (item.getItemId() == R.id.delete_task) {
-            //TODO: Delete this task
-            Log.i("contextMenu", "Task Deletion Called!");
-            return true;
-        }
-        return super.onContextItemSelected(item);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long

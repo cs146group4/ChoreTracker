@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Dummy Preferences">
+    <PreferenceCategory android:title="Sample Preferences Menu">
         <CheckBoxPreference
             android:defaultValue="false"
             android:summaryOff="This box is unchecked."

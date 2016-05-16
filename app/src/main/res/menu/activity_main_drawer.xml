@@ -9,7 +9,7 @@
         <item
             android:id="@+id/about"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/switch_user" />
+            android:title="About" />
     </group>
 <!-- Preserving this section as a comment, in case we need to add headers like this later.
     <item android:title="Communicate">
