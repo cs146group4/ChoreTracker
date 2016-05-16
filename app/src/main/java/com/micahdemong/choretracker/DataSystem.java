@@ -134,4 +134,9 @@ public class DataSystem {
     public ArrayList<Task> getTasks() {
         return tasks;
     }
+
+    public void deleteAllTasks(Context context){
+        tasks = new ArrayList<>();
+        saveTasks(context);
+    }
 }

@@ -156,8 +156,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void doDeleteAllTasks() {
-        //TODO: Delete all tasks
-        Log.i("FragmentAlertDialog", "Positive click!");
+        dataSys.deleteAllTasks(getApplicationContext());
+        initializeAdapter();
+        Log.i("FragmentAlertDialog", "Should have deleted all tasks.");
     }
 
     public void doNegativeClick() {

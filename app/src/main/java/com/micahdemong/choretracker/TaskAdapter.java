@@ -33,7 +33,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TaskViewHolder(View itemView, IMyViewHolderClicks listener) {
             super(itemView);
 
-
             cv = (CardView) itemView.findViewById(R.id.cv);
             taskName = (TextView) itemView.findViewById(R.id.task_name_text_view);
             taskDescription = (TextView) itemView.findViewById(R.id.task_description_text_view);
