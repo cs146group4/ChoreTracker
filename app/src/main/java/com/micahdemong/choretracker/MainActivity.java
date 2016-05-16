@@ -13,7 +13,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +24,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         //Initialize the Recycler View
         rv = (RecyclerView) findViewById(R.id.rv);
+        registerForContextMenu(rv);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
@@ -116,6 +120,25 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        if(item.getItemId() == R.id.delete_task){
+            //TODO: Delete this task
+            Log.i("contextMenu","Task Deletion Called!");
+            return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -138,12 +161,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void doPositiveClick() {
-        // Do stuff here.
+        //TODO: Delete all tasks
         Log.i("FragmentAlertDialog", "Positive click!");
     }
 
     public void doNegativeClick() {
-        // Do stuff here.
         Log.i("FragmentAlertDialog", "Negative click!");
     }
 
