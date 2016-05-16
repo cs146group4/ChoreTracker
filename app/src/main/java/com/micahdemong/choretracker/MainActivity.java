@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity
 
     private RecyclerView rv;
     private TextView emptyView;
-    DataSystem dataSys;
+    public static DataSystem dataSys;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,5 +214,11 @@ public class MainActivity extends AppCompatActivity
                     })
                     .create();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dataSys.saveTasks(getApplicationContext());
     }
 }

@@ -2,8 +2,8 @@ package com.micahdemong.choretracker;
 
 import android.content.Context;
 
-import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -40,9 +40,7 @@ public class DataSystem {
 		}
 	}
 
-    public void createTask(Task t, Context context){
-        tasks.add(t);
-        sort(tasks);
+    public void saveTask(Task t, Context context){
         try {
             FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_APPEND);
             PrintWriter out = new PrintWriter(fos);
@@ -55,6 +53,11 @@ public class DataSystem {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void addToList(Task t){
+        tasks.add(t);
+        tasks = sort(tasks);
     }
 
 	/*
@@ -115,6 +118,18 @@ public class DataSystem {
 		}
 		return t;
 	}
+
+    public void saveTasks(Context context){
+        try {
+            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
+            PrintWriter out = new PrintWriter(fos);
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        for(Task t : tasks)
+            saveTask(t,context);
+    }
 
     public ArrayList<Task> getTasks() {
         return tasks;

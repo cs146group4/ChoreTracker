@@ -32,9 +32,9 @@ public class NewTaskActivity extends Activity implements AdapterView.OnItemSelec
         String titleText = title.getText().toString();
         String descText = description.getText().toString();
 
-        DataSystem d = new DataSystem();
-        Task t = new Task(titleText,descText,false,daysRemaining);
-        d.createTask(titleText, descText, false, getApplicationContext());
+        Task t = new Task(titleText, descText, false, 0);
+        MainActivity.dataSys.addToList(t);
+        MainActivity.dataSys.saveTasks(getApplicationContext());
 
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
