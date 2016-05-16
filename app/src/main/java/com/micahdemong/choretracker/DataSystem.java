@@ -96,7 +96,7 @@ public class DataSystem {
 	}
 
 	/*
-	 * Custom selection sort to sort the tasks ArrayList and append tasks older than 6 days to the end of the ArrayList.
+	 *Custom selection sort to sort the tasks ArrayList and append tasks older than 6 days to the end of the ArrayList.
 	 */
 	public ArrayList<Task> sort(ArrayList<Task> t) {
 		for (int i = 0; i < t.size() - 1; i++) {
@@ -115,17 +115,6 @@ public class DataSystem {
 		}
 		return t;
 	}
-
-    /**
-     * Completely clears the tasks file and refreshes the ArrayList.
-     */
-    public void clearAllTasks(Context context){
-        try {
-            FileOutputStream fos = context.openFileOutput(TASK_FILENAME, Context.MODE_PRIVATE);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     /**
      * Deletes the task with the specified name from the file and refreshes the ArrayList.
