@@ -12,4 +12,5 @@
     <string name="user_name_default">USER_NAME</string>
     <string name="points_default">0 Points</string>
     <string name="alert_dialog_two_buttons_title">Delete all tasks?</string>
+    <string name="no_data_available">No tasks to show. You can add tasks using the + button.</string>
 </resources>

@@ -22,6 +22,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView rv;
+    private TextView emptyView;
     ArrayList<Task> taskList;
 
     @Override
@@ -39,13 +41,17 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        emptyView = (TextView) findViewById(R.id.empty_view);
+
         //Initialize the Recycler View
         rv = (RecyclerView) findViewById(R.id.rv);
+
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
 
         initializeTaskData();
         initializeAdapter();
+        setContentVisibility();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +85,17 @@ public class MainActivity extends AppCompatActivity
     private void initializeAdapter() {
         TaskAdapter adapter = new TaskAdapter(taskList);
         rv.setAdapter(adapter);
+    }
+
+    private void setContentVisibility() {
+        if (taskList.isEmpty()){
+            rv.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+        else {
+            rv.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
     }
 
     @Override
