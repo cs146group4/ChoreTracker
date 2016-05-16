@@ -1,10 +1,18 @@
 package com.micahdemong.choretracker;
 
+import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -64,19 +73,7 @@ public class MainActivity extends AppCompatActivity
         DataSystem d = new DataSystem();
         d.loadTasks(getApplicationContext());
         taskList = d.getTasks();
-        //Dummy Task list for test purposes
-        taskList.add(new Task("Do the dishes",
-                "Rinse off the dishes in the sink and put them all in the dishwasher.",
-                false));
-        taskList.add(new Task("Mop the bathroom floor",
-                "....pls?",
-                false));
-        taskList.add(new Task("Vacuum",
-                "The living room, hallway, and Micah's bedroom need to be vacuumed.",
-                false));
-        taskList.add(new Task("Something Else",
-                "Oh Okay that sounds fine to me",
-                false));
+
     }
 
     private void initializeAdapter() {
@@ -109,11 +106,28 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_delete_all_tasks) {
+            showDialog();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    void showDialog() {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance
+                (R.string.alert_dialog_two_buttons_title);
+        newFragment.show(getSupportFragmentManager(), "dialog");
+    }
+
+    public void doPositiveClick() {
+        // Do stuff here.
+        Log.i("FragmentAlertDialog", "Positive click!");
+    }
+
+    public void doNegativeClick() {
+        // Do stuff here.
+        Log.i("FragmentAlertDialog", "Negative click!");
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -134,5 +148,39 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int title) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("title", title);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int title = getArguments().getInt("title");
+
+            return new AlertDialog.Builder(getActivity())
+                    .setTitle(title)
+                    .setMessage("Are you sure you want to delete all tasks? This cannot be undone.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ((MainActivity) getActivity()).doPositiveClick();
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ((MainActivity) getActivity()).doNegativeClick();
+                        }
+                    })
+                    .create();
+        }
+    }
+
 
 }
